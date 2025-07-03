@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/add" method="post" class="input-section">
+    <input type="text" name="task" placeholder="Enter a task" class="input-field" required>
+
+    <select name="category" class="input-field">
+        <option value="" disabled selected hidden>Category</option>
+        <option value="Personal">Personal</option>
+        <option value="Studies">Studies</option>
+        <option value="Work">Work</option>
+    </select>
+
+    <input type="date" name="due_date" class="input-field">
+
+    <button type="submit" class="add-btn">Add</button>
+</form>
+
+<ul class="todo-list">
+    {% for task in tasks %}
+    <li class="todo-item {% if task.due_date and task.due_date < today %}overdue{% endif %}">
+        <span class="task-text">{{ task.text }}</span>
+        <span class="meta-info">
+            {{ task.category }}{% if task.due_date %} (Due: {{ task.due_date }}){% endif %}
+        </span>
+        <a href="/delete/{{ loop.index0 }}" class="delete-btn">❌</a>
+    </li>
+    
+    {% endfor %}
+</ul>
+{% endblock %}
