@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="intro">
+      <h1 id="introText"></h1>
+      <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+  <div class="quiz-container">
+    <h1>Simple Quiz</h1>
+    <div id="quiz">
+      <div class="question" id="question">Question text here</div>
+      <div class="options">
+        <label><input type="radio" name="option" value="0" /> <span id="opt0"></span></label><br />
+        <label><input type="radio" name="option" value="1" /> <span id="opt1"></span></label><br />
+        <label><input type="radio" name="option" value="2" /> <span id="opt2"></span></label><br />
+        <label><input type="radio" name="option" value="3" /> <span id="opt3"></span></label>
+      </div>
+      <button onclick="nextQuestion()">Next</button>
+    </div>
+
+  <div id="resultContainer" style="text-align:center;">
+     <div id="result" class="result"></div>
+      <button id="restartBtn" onclick="restartQuiz()" style="display:none;">Restart Quiz</button>
+  </div>
+  
+  <div id="progressWrapper" class="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <div class="top-right">
+    <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+  </div>
+
+ <button id="seeAnswersBtn" onclick="showAnswers()" style="display: none;">See Your Answers</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
