@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vintage Photobooth</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Lora&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="#" id="aboutBtn">About</a>
+    <span class="icon">⤴</span>
+  </nav>
+
+  <main class="container">
+    <div class="photo-stack">
+      <img src="polaroid-stack.png" alt="Polaroid Style" class="stack-image front" />
+      <img src="polaroid-stack2.png" alt="Polaroid Style 2" class="stack-image back" />
+    </div>
+
+    <h1 class="title">Vintage Photobooth</h1>
+
+    <div class="button-group">
+      <button id="uploadBtn">Upload Photos</button>
+    </div>
+
+    <div class="upload-container hidden" id="uploadContainer">
+      <div class="upload-content">
+        <h2>Upload Your Photos</h2>
+        <div class="upload-grid">
+          <div class="upload-box" id="uploadBox1">
+            <span class="upload-plus">+</span>
+            <input type="file" class="upload-input" accept="image/*" hidden>
+          </div>
+          <div class="upload-box" id="uploadBox2">
+            <span class="upload-plus">+</span>
+            <input type="file" class="upload-input" accept="image/*" hidden>
+          </div>
+          <div class="upload-box" id="uploadBox3">
+            <span class="upload-plus">+</span>
+            <input type="file" class="upload-input" accept="image/*" hidden>
+          </div>
+        </div>
+        <button id="uploadContinueBtn" disabled>Continue with 0 photos</button>
+        <button id="uploadCancelBtn">Cancel</button>
+      </div>
+    </div>
+
+    <div class="preview-frame hidden" id="previewFrame">
+      <img id="previewImage" src="" alt="Captured Photo" />
+      <div class="photo-actions">
+        <button id="downloadBtn">Download</button>
+        <button id="newPhotoBtn">New Photo</button>
+      </div>
+    </div>
+
+    <div class="about-section hidden" id="aboutSection">
+      <div class="about-content">
+        <h2>About Vintage Photobooth</h2>
+        <p>My love for photos has never stopped to surprise me so here is something I've built to preserve those lovely memories in a vintage photobooth for fun, and if you love playful, nostalgic design, you'll probably enjoy what I share.</p>
+        <p>Follow my <a href="https://www.linkedin.com/in/ujjainee-bhattacharjee-a04998360/" target="_blank" class="linkedin-link">LinkedIn</a> page for more projects and other cool experiments!</p>
+        <button id="closeAboutBtn">Close</button>
+      </div>
+    </div>
+
+    <div class="customize-container hidden" id="customizeContainer">
+      <h2>Customize your photostrip</h2>
+      <div class="photostrip-preview">
+        <div class="photostrip-frame" id="photostripFrame"></div>
+      </div>
+      <div class="customize-options">
+        <div class="option-group">
+          <h3>Photostrip</h3>
+          <select id="photostripStyle">
+            <option value="classic">Classic</option>
+            <option value="vintage">Vintage</option>
+            <option value="modern">Modern</option>
+          </select>
+        </div>
+        <div class="option-group">
+          <h3>Background</h3>
+          <select id="backgroundStyle">
+            <option value="Lavender">Lavender</option>
+            <option value="#ADD8E6">Blue</option>
+            <option value="pink">Pink</option>
+          </select>
+        </div>
+        <div class="option-group checkbox-option">
+          <input type="checkbox" id="dateStampCheckbox">
+          <label for="dateStampCheckbox">Display date stamp</label>
+        </div>
+        <button id="generateBtn">Continue</button>
+      </div>
+    </div>
+
+    <div class="print-container hidden" id="printContainer">
+      <div class="print-content">
+        <div class="printing-animation">
+          <div class="printing-text">Photo is printing...</div>
+          <div class="printer-graphic">
+            <div class="paper"></div>
+            <div class="printer-body"></div>
+          </div>
+        </div>
+        <div id="finalPhotostrip"></div>
+        <div class="print-date" id="printDate"></div>
+        <button id="collectBtn">Collect Photo</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

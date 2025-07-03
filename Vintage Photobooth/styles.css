@@ -1,0 +1,588 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lora', serif;
+  background-color: #f9f5ec;
+  color: #5e3b1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.top-nav {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 16px;
+}
+
+.top-nav a {
+  color: #5e3b1e;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.container {
+  text-align: center;
+  margin-top: 80px;
+  padding-bottom: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.title {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+button {
+  background-color: #6b3e26;
+  color: #fff;
+  padding: 12px 20px;
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #8b5e3c;
+  transform: translateY(-2px);
+}
+
+.about-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 30px;
+  border-radius: 12px 12px 0 0;
+  max-width: 100%;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.about-section.visible {
+  transform: translateY(0);
+}
+
+.about-content {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-family: 'Homemade Apple', cursive;
+  color: #6b3e26;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.linkedin-link {
+  color: #0077b5; /* LinkedIn brand color */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.linkedin-link:hover {
+  color: #005582; /* Darker LinkedIn blue on hover */
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px) rotate(-1deg); }
+  50%  { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .container {
+    margin-top: 60px;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  .camera-controls, .photo-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.upload-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.upload-container h2 {
+  font-family: 'Homemade Apple', cursive;
+  color: #6b3e26;
+  margin-bottom: 20px;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.upload-box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 2px dashed #8a6840;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-box:hover {
+  border-color: #6b3e26;
+  transform: translateY(-2px);
+}
+
+.upload-plus {
+  font-size: 2rem;
+  color: #8a6840;
+}
+
+.upload-box.has-image .upload-plus {
+  display: none;
+}
+
+.upload-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.upload-box.has-image img {
+  display: block;
+}
+
+#uploadContinueBtn {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #8a6840;
+}
+
+#uploadContinueBtn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#uploadCancelBtn {
+  margin-top: 10px;
+  width: 100%;
+  background-color: transparent;
+  color: #6b3e26;
+  border: 1px solid #6b3e26;
+}
+
+#uploadCancelBtn:hover {
+  background-color: #f0e6d6;
+}
+
+/* Add these styles to your existing CSS */
+.upload-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(249, 245, 236, 0.95);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.upload-container.visible {
+  transform: translateY(0);
+}
+
+.upload-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Customize Container Styles */
+.customize-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(249, 245, 236, 0.95);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.customize-container.visible {
+  transform: translateY(0);
+}
+
+.customize-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Homemade Apple', cursive;
+}
+
+.photostrip-preview {
+  margin: 20px 0;
+}
+
+.photostrip-frame {
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
+  background-color: white;
+  border: 15px solid #5e3b1e;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+#finalPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.customize-options {
+  text-align: left;
+  margin: 20px 0;
+  font-family: 'Homemade Apple', cursive;
+}
+
+.option-group {
+  margin-bottom: 15px;
+  font-family: 'Homemade Apple', cursive;
+}
+
+.option-group h3 {
+  font-family: 'Homemade Apple', cursive;
+  color: #5e3b1e;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #8a6840;
+  border-radius: 4px;
+  background-color: #f9f5ec;
+  color: #5e3b1e;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-option input {
+  margin-right: 10px;
+}
+
+.photostrip-frame {
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
+  background-color: white;
+  border: 15px solid #5e3b1e;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  display: flex; /* Add flex display */
+  padding: 5px; /* Add some padding */
+}
+
+.photostrip-photo {
+  height: 100%;
+  flex: 1;
+  margin: 0 2px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.date-stamp {
+  position: absolute;
+  bottom: 10px;
+  right: 2px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  z-index: 2;;
+  color: #faffbe;
+}
+
+.customize-container h2 {
+  font-family: 'Homemade Apple', cursive;
+  color: #6b3e26;
+  margin-bottom: 20px;
+}
+
+.photo-stack {
+  display: flex;
+  align-items: center;
+  width: 12px;
+  height: 180px;
+  margin-bottom: 30px;
+  margin-right: 90px;
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+  transform: rotate(-15deg);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.stack-image {
+  position: fixed;
+  width: 120px;
+  height: 180px;
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transform-origin: center center;
+  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  object-fit: cover;
+}
+
+.stack-image.front {
+  transform: rotate(-5deg);
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.stack-image.back {
+  transform: rotate(5deg) translateY(15px) translateX(10px);
+  z-index: 1;
+  filter: brightness(0.95);
+}
+
+@keyframes photoCycle {
+  0%, 45% {
+    transform: rotate(-5deg);
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  }
+  50%, 95% {
+    transform: rotate(5deg) translateY(15px) translateX(10px);
+    z-index: 1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  100% {
+    transform: rotate(-5deg);
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  }
+}
+
+.photo-stack .front {
+  animation: photoCycle 4s infinite;
+}
+
+.photo-stack .back {
+  animation: photoCycle 4s infinite reverse;
+}
+
+.print-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(249, 245, 236, 0.95);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  opacity: 0;
+}
+
+.print-container.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.print-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.printing-animation {
+  margin: 20px 0;
+  position: relative;
+  height: 100px;
+}
+
+.printing-text {
+  font-family: 'Homemade Apple', cursive;
+  color: #6b3e26;
+  margin-bottom: 30px;
+}
+
+.printer-graphic {
+  position: relative;
+  height: 60px;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.paper {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background: white;
+  border: 2px solid #ddd;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: printAnimation 2s infinite;
+}
+
+.printer-body {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 20px;
+  background: #5e3b1e;
+  border-radius: 3px;
+}
+
+.print-date {
+  font-family: 'Lora', serif;
+  color: #5e3b1e;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+@keyframes printAnimation {
+  0% { top: 0; opacity: 0; }
+  50% { top: -20px; opacity: 1; }
+  100% { top: -40px; opacity: 0; }
+}
+
+#printContainer #finalPhotostrip {
+  margin: 20px auto;
+  max-width: 300px;
+  border: 15px solid #5e3b1e;
+  border-radius: 5px;
+}
+
+#printContainer #finalPhotostrip canvas {
+  width: 100%;
+  height: auto;
+}
+
+.print-container {
+  display: flex !important;
+}
+
+/* Remove all camera-container related styles */
+
+/* Ensure print container has proper z-index */
+.print-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(249, 245, 236, 0.95);
+  z-index: 1000; /* Highest z-index */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  opacity: 0;
+}
+
+.print-container.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Keep all other existing styles */
