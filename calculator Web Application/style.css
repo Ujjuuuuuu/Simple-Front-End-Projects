@@ -1,0 +1,83 @@
+body {
+  background: #1e1e2f;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.calculator {
+  background: #2c2c3e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  width: 300px;
+}
+
+#display {
+  width: 92%;
+  height: 60px;
+  font-size: 24px;
+  text-align: right;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #3d3d5c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #57577a;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgb(174, 27, 27);
+  font-size: 14px;
+}
+
+body.light-mode {
+  background: #f0f0f0;
+  color: #000;
+}
+
+body.light-mode .calculator {
+  background: #99a0e3;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #display {
+  background: #f5f5f5;
+  color: black;
+}
+
+body.light-mode button {
+  background: #dddddd;
+  color: black;
+}
+
+body.light-mode button:hover {
+  background: #bbbbbb;
+}
+
